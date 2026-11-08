@@ -1,88 +1,105 @@
 # Python Interactive Workbook
 
-Personal workspace for learning Python while working through *Python Crash Course* (3rd Edition) by Eric Matthes.
+Personal workspace for learning Python with *Python Crash Course* (3rd Edition) by Eric Matthes.
 
-This is a simple place to keep exercises, notes, and small projects as you go. It starts with the chapter you're currently working on and grows only as you need it.
+Use the book as the reference, an AI tutor for short explanations and feedback, and VS Code to write and run your own code. This repository keeps your work and study checkpoint available across computers.
 
-## Purpose
-- Practice the exercises from the book
-- Keep your own notes and takeaways
-- Track what you've actually completed
-- Stay organized without extra complexity
+## Start here
 
-## Setup
+1. Read [PROGRESS.md](PROGRESS.md) for the latest recorded checkpoint.
+2. Give your tutor [TUTOR_INSTRUCTIONS.md](TUTOR_INSTRUCTIONS.md), your progress file, and the relevant code.
+3. Work through one small concept and exercise at a time.
+4. Run your attempt in VS Code, review the result, and record what you learned.
+5. Commit and push your changes before switching computers.
 
-### 1. Create a virtual environment
-From the root of this repository:
+The existing scaffold starts at Chapter 2. That is an organizational starting point, not evidence of completed learning.
+
+## Set up on each computer
+
+Install Python 3, Git, VS Code, and the VS Code Python extension. Clone this repository once on each computer, then open its folder in VS Code:
 
 ```bash
+git clone https://github.com/Austin-Leach/Python-Interactive-Workbook.git
+cd Python-Interactive-Workbook
 python -m venv .venv
 ```
 
-### 2. Activate it
-- **Windows (Command Prompt):** `.venv\Scripts\activate`
-- **Windows (PowerShell):** `.venv\Scripts\Activate.ps1`
-- **macOS / Linux:** `source .venv/bin/activate`
+If Windows does not recognize `python`, use `py` to create the environment.
 
-When it's active, your prompt will usually show `(.venv)`.
+Activate it:
+- Windows PowerShell: `.\.venv\Scripts\Activate.ps1`
+- Windows Command Prompt: `.venv\Scripts\activate.bat`
+- macOS / Linux: `source .venv/bin/activate`
 
-### 3. Install dependencies (when needed)
-Right now there are none. When an exercise needs a third-party package, install it with:
+In VS Code, run **Python: Select Interpreter** and choose this repository's `.venv`. Create a separate environment on each computer; it is not synced through Git.
 
-```bash
-pip install package-name
-```
-
-Then note it in this README under a short "Dependencies" section so you remember later.
-
-## How to run Python files
-From the root of the repo (with your virtual environment activated):
+Run the existing setup example from the repository root:
 
 ```bash
 python chapters/chapter_02/example.py
 ```
 
-Or navigate into a folder and run the file directly.
-
-## Current structure
+If PowerShell blocks activation, you can run it directly:
+```powershell
+.\.venv\Scripts\python.exe chapters/chapter_02/example.py
 ```
+
+No third-party dependencies are currently needed. Add packages only when a chapter requires them, using `python -m pip install package-name`, and record the actual package and version in that chapter's notes.
+
+## Workbook structure
+
+```text
+README.md
+PROGRESS.md
+TUTOR_INSTRUCTIONS.md
 chapters/
   chapter_02/
-    exercises/     ← put your exercise attempts here
-    notes/         ← notes, questions, and takeaways
-    example.py     ← small runnable example to verify setup
+    example.py
+    exercises/
+      README.md
+    notes/
+      notes.md
 ```
 
-## Progress checklist
+Keep exercise attempts in the existing exercises folder, for example `2-1_simple_message.py`. Use the book's exercise numbers. Save explanations, questions, and takeaways in the chapter's notes. Add `chapter_03/exercises/` and `chapter_03/notes/notes.md` only when you reach that chapter; repeat as needed. No empty full-book scaffold or prewritten solutions are required.
 
-Update this as you actually finish work — not just because a file exists.
+## A study session
 
-### Part I: Basics
-- [ ] Chapter 1: Getting Started
-- [ ] Chapter 2: Variables and Simple Data Types ← **current**
-- [ ] Chapter 3: Introducing Lists
-- [ ] Chapter 4: Working with Lists
-- [ ] Chapter 5: if Statements
-- [ ] Chapter 6: Dictionaries
-- [ ] Chapter 7: User Input and while Loops
-- [ ] Chapter 8: Functions
-- [ ] Chapter 9: Classes
-- [ ] Chapter 10: Files and Exceptions
-- [ ] Chapter 11: Testing Your Code
+- Read the relevant section, then ask for the essential idea, a tiny example, and one practice task.
+- Write your own attempt before requesting a solution.
+- Run it, compare actual and expected output, and share the code and exact error if stuck.
+- Ask for a hint first; explain the working solution in your own words.
+- Update [PROGRESS.md](PROGRESS.md) with the exact next action and any unresolved question. Mark completion only when supported by your actual work.
 
-### Part II: Projects
-- [ ] Chapter 12: A Ship That Fires Bullets
-- [ ] Chapter 13: Aliens!
-- [ ] Chapter 14: Scoring
-- [ ] Chapter 15: Generating Data
-- [ ] Chapter 16: Downloading Data
-- [ ] Chapter 17: Working with APIs
-- [ ] Chapter 18: Getting Started with Django
-- [ ] Chapter 19: User Accounts
-- [ ] Chapter 20: Styling and Deploying an App
+## Continue on another computer
 
-## Next study session
-1. Activate the virtual environment
-2. Open `chapters/chapter_02/example.py` and run it
-3. Start your Chapter 2 exercises in `chapters/chapter_02/exercises/`
-4. Record any notes or questions in `chapters/chapter_02/notes/`
+Before starting, from the repository folder:
+
+```bash
+git status
+git pull --ff-only
+```
+
+Finish or commit local changes before pulling. If Git reports a conflict or divergent history, resolve it before continuing; do not discard work or force-push to get past it.
+
+At the end of a session:
+
+```bash
+git status
+git diff
+git add chapters/ PROGRESS.md
+git commit -m "Practice chapter 2 exercises and record next step"
+git push
+```
+
+Use a message that describes what you actually did. Stage any intentionally edited guide files separately. Pushing sends committed files to GitHub; the other computer receives them after pulling.
+
+## Starting or resuming tutoring
+
+Copy this into your tutoring chat and provide the referenced files:
+
+> Follow TUTOR_INSTRUCTIONS.md. Read PROGRESS.md and my relevant exercise files. Use my copy of Python Crash Course as the reference when available. Resume from the recorded next action, teach the essentials concisely, and give me one task to attempt in VS Code. Ask for missing context instead of inventing progress or exercise wording.
+
+The saved progress file is the handoff between sessions. Provide its latest version and relevant code whenever the tutor cannot access the repository.
+
+Keep the full book and other private reference material out of this public repository. Store your own code and notes here.

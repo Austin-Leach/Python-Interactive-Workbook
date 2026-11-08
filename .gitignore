@@ -34,3 +34,14 @@ secrets/
 # Generated or temporary files
 *.log
 *.tmp
+
+# Test and tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Private reference material (keep the book outside the public repository)
+private_reference/
